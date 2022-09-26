@@ -1,3 +1,6 @@
+/* this file is only here as a point of reference for redux logic keeping the entire folder until its ready to be hosted online */
+
+
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchCount } from './counterAPI';
 
