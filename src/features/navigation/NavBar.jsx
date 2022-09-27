@@ -9,11 +9,11 @@ import {
 import DrawerComp from "./DrawerComp";
 import NavLink from "./NavLink.styled";
 import { LightMode, DarkMode } from "@mui/icons-material";
-import {theme} from '../../theme'
+import {  useTheme } from '@emotion/react'
 
-const NavBar = ({toggleTheme, themeMode}) => {
+const NavBar = () => {
 
-  const {mode} = theme.palette
+  const theme = useTheme()
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   
   
@@ -29,10 +29,9 @@ const NavBar = ({toggleTheme, themeMode}) => {
             <NavLink emoji="🏙">City</NavLink>
             <NavLink emoji="🔮">Future</NavLink>
             <IconButton
-            onClick={toggleTheme}
+           
             >
-              {mode === 'light' ? <LightMode/> :
-              <DarkMode/>}
+              <LightMode/>
             </IconButton>{" "}
           </>
         ) : (

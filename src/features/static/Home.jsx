@@ -1,12 +1,14 @@
 import React from "react";
 import { Box, Grid, Typography, Container} from "@mui/material";
+import {useTheme} from "@mui/material";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <SubHero />
+      
       <Container maxWidth="lg" sx={{ justifyContent: "space-evenly", flexFlow: 'column wrap' }}>
+      <SubHero />
         <CourseDescription />
       </Container>
     </main>
@@ -15,6 +17,7 @@ export default function Home() {
 
 const Hero = () => {
   return (
+   
     <Grid
       container
       sx={{
@@ -23,10 +26,13 @@ const Hero = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-evenly",
+        width: '100vw',
+        
       }}
     >
+      
       <Grid item xs={12} md={6}>
-        <Typography variant="h2">_coreLabSystems</Typography>
+        <Typography variant="h2">_coreStudioSystems</Typography>
         <Typography variant="h6">
           An analysis of myself, the world around me and the systems that
           connect or divide us.{" "}
@@ -35,17 +41,21 @@ const Hero = () => {
       <Grid item>
         <Typography variant="h1">⚙️</Typography>
       </Grid>
+    
     </Grid>
+   
   );
 };
 
 const SubHero = () => {
+
+  
   return (
     <Box
       sx={{
         height: "10vh",
-        maxWidth: "100%",
-        backgroundColor: "black",
+        minWidth: "100vw",
+        backgroundColor: 'black',
         display: "flex",
         alignItems: "center",
       }}
@@ -63,7 +73,7 @@ const CourseDescription = () => {
     <>
     
       <Typography variant="h4">Overview</Typography>
-      <Typography gutterBottom sx={{lineHeight: '200%'}}>
+      <Typography >
         This course was an intensive project-based studio, focusing on the
         organization of systems. how systems and networks are structured,
         function, and interact with each other. The course investigates online

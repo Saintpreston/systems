@@ -1,21 +1,20 @@
-import { createTheme } from "@mui/material";
+import { blue, red } from '@mui/material/colors';
 
-const pseudoBlack = '#1F1F1F'
 
-const darkPalette = {
+export const darkPalette = {
   primary: {
     main: "#fff ",
   },
   background: {
-    default: pseudoBlack,
+    default: '#1F1F1F',
     paper: "#0B1929",
   },
   text: {
-    primary: "#F9FBFF",
+    primary: blue[500],
     secondary: "#EBFF00",
   },
 };
-const lightPalette = {
+export const lightPalette = {
   primary: {
     main: "#4200FF",
   },
@@ -24,17 +23,22 @@ const lightPalette = {
     paper: "#FFFFFF",
   },
   text: {
-    primary: pseudoBlack,
+    primary: red[500],
     secondary: "#BC00FF",
   },
 };
 
 
 
-export const getDesignTokens = (mode) => ({
+ const getDesignTokens = (mode) => ({
   palette: {
     mode,
     ...(mode === "dark" ? darkPalette : lightPalette),
+  },
+  typography:{
+      body1:{
+        lineHeight: 2
+      }
   },
   components: {
     MuiContainer: { 
@@ -48,13 +52,14 @@ export const getDesignTokens = (mode) => ({
 
     MuiAppBar: {
       defaultProps:{
-        color: 'transparent',
-        elevation: 0
+        elevation: 0,
+        color: 'transparent'
       },
       styleOverrides: {
         root: {
+          backdropFilter: 'blur(3px)',
           borderBottom: '1px solid',
-          borderColor: 'primary.main'
+          borderColor: 'black'
         }
       }
     },
@@ -83,6 +88,7 @@ export const getDesignTokens = (mode) => ({
   },
 });
 
-export let theme = createTheme(getDesignTokens());
 
 
+
+export default getDesignTokens
