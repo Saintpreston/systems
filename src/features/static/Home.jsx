@@ -6,11 +6,12 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      
-      <Container maxWidth="lg" sx={{ justifyContent: "space-evenly", flexFlow: 'column wrap' }}>
       <SubHero />
+      <Container maxWidth="lg" sx={{ justifyContent: "space-evenly", flexFlow: 'column wrap' }}>
+     
         <CourseDescription />
       </Container>
+      
     </main>
   );
 }
@@ -22,7 +23,7 @@ const Hero = () => {
       container
       sx={{
         height: "80vh",
-        backgroundColor: "gray",
+      
         display: "flex",
         alignItems: "center",
         justifyContent: "space-evenly",

@@ -1,39 +1,48 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from "react";
 import NavBar from "./features/navigation/NavBar";
 import Home from "./features/static/Home";
 import { ThemeProvider } from "@mui/material/styles";
-import { CssBaseline } from "@mui/material";
+import { CssBaseline, createTheme,  useMediaQuery } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { createTheme } from "@mui/material";
 import getDesignTokens from "./theme";
-import {Card, Typography} from "@mui/material";
+import { toggleTheme} from './features/navigation/themeSlice'
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
+import Self from './features/self/Self'
+import Future from "./features/future/Future";
+import City from "./features/city/City";
 
 const App = () => {
-  const [mode, setMode] = useState("dark");
-  const dispatch = useDispatch();
-  const darkMode = useSelector((state) => state.theme.darkMode);
+  const dispatch = useDispatch()
+  const themeMode = useSelector((state) => state.theme.mode);
+  const preferedMode = useMediaQuery("(prefers-color-scheme: dark)") ? 'dark' : 'light'
+  
 
-  useMemo(() => {
-    if (darkMode) {
-      setMode("dark");
-      console.log('here')
-    } else {
-      setMode("light");
-    }
-  }, [darkMode]);
+  useMemo(()=>{
+    console.log('you switched your preference')
+    if (themeMode === preferedMode )return;
+    dispatch(toggleTheme(preferedMode));
+  }
+  , [preferedMode,dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const theme = useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+ 
 
-  console.log(theme);
+const theme = createTheme(getDesignTokens(themeMode)); 
+    
+  console.log('render')
+  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <NavBar />
-    
-      <Home />
-      <Card><Typography>Hello</Typography>
-
-</Card>
+      <Routes>
+      <Route path='/'  element={<Home />} />
+      <Route path='/self' element={<Self/>} />
+      <Route path='/city' element={<City/>} />
+      <Route path='/future' element={<Future/>} />
+      </Routes>  
     </ThemeProvider>
   );
 };

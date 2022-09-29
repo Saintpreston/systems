@@ -1,47 +1,36 @@
-import { blue, red } from '@mui/material/colors';
-
+import { pink } from "@mui/material/colors";
 
 export const darkPalette = {
   primary: {
-    main: "#fff ",
+    main: pink[500],
+  },
+  secondary: {
+    main: "#f50057",
   },
   background: {
-    default: '#1F1F1F',
-    paper: "#0B1929",
-  },
-  text: {
-    primary: blue[500],
-    secondary: "#EBFF00",
+    default: "#101010",
+    paper: "#202020",
   },
 };
+
 export const lightPalette = {
   primary: {
-    main: "#4200FF",
-  },
-  background: {
-    default: "#FFFFFF",
-    paper: "#FFFFFF",
-  },
-  text: {
-    primary: red[500],
-    secondary: "#BC00FF",
+    main: pink[500],
   },
 };
 
-
-
- const getDesignTokens = (mode) => ({
+const getDesignTokens = (mode) => ({
   palette: {
     mode,
     ...(mode === "dark" ? darkPalette : lightPalette),
   },
-  typography:{
-      body1:{
-        lineHeight: 2
-      }
+  typography: {
+    body1: {
+      lineHeight: 2,
+    },
   },
   components: {
-    MuiContainer: { 
+    MuiContainer: {
       styleOverrides: {
         root: {
           display: "flex",
@@ -51,44 +40,36 @@ export const lightPalette = {
     },
 
     MuiAppBar: {
-      defaultProps:{
+      defaultProps: {
         elevation: 0,
-        color: 'transparent'
+        color: "transparent",
       },
       styleOverrides: {
         root: {
-          backdropFilter: 'blur(3px)',
-          borderBottom: '1px solid',
-          borderColor: 'black'
-        }
-      }
+          backdropFilter: "blur(5px)",
+          borderBottom: "1px solid",
+        },
+      },
     },
-    MuiToolbar:{
-      styleOverrides:{
-        root:{
-         display: 'flex',
-         justifyContent: 'space-between'
-        }
-      }
+    MuiToolbar: {
+      styleOverrides: {
+        root: {
+          display: "flex",
+          justifyContent: "space-between",
+        },
+      },
     },
     MuiIconButton: {
-      defaultProps: {
-      
-      },
+      defaultProps: {},
       styleOverrides: {
-        root:{
-          border: 'solid',
-          borderWidth: '2px',
-           borderColor: 'text.primary',
-           borderRadius: '8px',
-           color: 'text.primary'
-        }
-      }
+        root: {
+          border: "solid",
+          borderWidth: "2px",
+          borderRadius: "8px",
+        },
+      },
     },
   },
 });
 
-
-
-
-export default getDesignTokens
+export default getDesignTokens;
